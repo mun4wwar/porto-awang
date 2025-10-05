@@ -46,7 +46,7 @@ export default function Hero() {
         className="relative z-10"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 1.0 }}
       >
         <motion.img
           src="/gweh.jpg"
