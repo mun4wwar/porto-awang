@@ -88,8 +88,9 @@ export default function ProjectSection() {
             </div>
 
             <span className="text-blue-400 font-semibold group-hover:underline">
-              {project.link === "#" ? "View Details →" : "Visit Project →"}
+              {project.link.includes("github.com") ? "View Details →" : "Visit Project →"}
             </span>
+
           </motion.a>
         ))}
       </div>
