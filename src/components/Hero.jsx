@@ -64,7 +64,7 @@ export default function Hero() {
         <h2 className="text-lg md:text-2xl text-gray-300 mb-8">
           <ReactTyped
             strings={[
-              "Software Engineering Student",
+              "Software Engineering Fresh Graduate",
               "Web Developer",
               "Mobile App Developer",
             ]}
