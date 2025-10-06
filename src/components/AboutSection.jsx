@@ -21,9 +21,9 @@ export default function AboutSection() {
         className="max-w-3xl bg-[var(--color-navy-light)] p-8 rounded-2xl shadow-lg border border-blue-500/10"
       >
         <p className="text-lg md:text-xl leading-relaxed text-gray-300 mb-6">
-          Hi there! 👋 I’m <span className="text-blue-400 font-semibold">Awang</span>, a{" "}
+          Hi there! 👋 I’m <span className="text-blue-400 font-semibold">Munawwar Hibatulllah</span> known as <span className="text-blue-400 font-semibold">Awang</span>, a{" "}
           <span className="text-blue-400 font-semibold">
-            Software Engineering Student
+            Software Engineering Fresh Graduate
           </span>{" "}
           from <span className="text-blue-400 font-semibold">Politeknik Negeri Padang</span>.
           I’m passionate about building sleek, efficient, and user-friendly web apps —
@@ -32,7 +32,8 @@ export default function AboutSection() {
 
         <p className="text-lg md:text-xl leading-relaxed text-gray-300 mb-6">
           My current focus is mastering{" "}
-          <span className="text-blue-400 font-semibold">Laravel</span> and{" "}
+          <span className="text-blue-400 font-semibold">Laravel</span>,
+          <span className="text-blue-400 font-semibold"> Flutter</span>, and{" "}
           <span className="text-blue-400 font-semibold">Next.js</span>, blending backend logic
           with frontend aesthetic to create seamless web experiences. I love exploring
           design systems and UI trends to bring ideas to life.

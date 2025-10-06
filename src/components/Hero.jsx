@@ -51,14 +51,14 @@ export default function Hero() {
         <motion.img
           src="/gweh.jpg"
           alt="Awang"
-          className="w-32 h-32 rounded-full border-4 border-[#60a5fa] shadow-[0_0_20px_rgba(96,165,250,0.3)] mx-auto mb-6 object-cover"
+          className="w-32 h-32 rounded-full border-4 border-[#134686] shadow-[0_0_20px_rgba(96,165,250,0.3)] mx-auto mb-6 object-cover"
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         />
 
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
-          Hi, I’m <span className="text-blue-400">Awang</span> 👋
+          Hi, I’m <span className="text-blue-500/60">Awang</span> 👋
         </h1>
 
         <h2 className="text-lg md:text-2xl text-gray-300 mb-8">
@@ -77,7 +77,7 @@ export default function Hero() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/projects"
-            className="px-6 py-3 bg-blue-500/90 text-white font-semibold rounded-xl hover:bg-blue-500 hover:shadow-[0_0_18px_rgba(96,165,250,0.4)] transition-all duration-300"
+            className="px-6 py-3 bg-blue-500/90 text-white font-semibold rounded-xl hover:shadow-[0_0_18px_rgba(96,165,250,0.4)] transition-all duration-300"
           >
             View Projects
           </Link>
@@ -91,7 +91,7 @@ export default function Hero() {
       </motion.div>
 
       {/* soft bottom glow */}
-      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-blue-500/10 to-transparent blur-2xl" />
+      <div className="absolute bottom-0 w-full h-128 bg-gradient-to-t from-blue-400/10 to-transparent blur-2xl" />
     </section>
   );
 }

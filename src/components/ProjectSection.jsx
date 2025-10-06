@@ -4,22 +4,39 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    title: "Rental Mobil Harkat",
-    desc: "Website sistem informasi manajemen rental mobil berbasis Laravel.",
-    tech: ["Laravel", "MySQL", "TailwindCSS"],
+    title: "Sistem Informasi Inventaris",
+    desc: "Website sistem informasi inventaris berbasis web sebagai project PBL semester 3. Fokus pada pengelolaan data barang dan stok inventaris kampus.",
+    tech: ["PHP", "MySQL"],
+    role: "Backend Developer",
+    link: "https://github.com/mun4wwar/project-inventory.git",
+  },
+  {
+    title: "Online Shop Mobile App",
+    desc: "Aplikasi mobile e-commerce sederhana untuk jual-beli produk. Dibangun menggunakan Flutter dengan fitur auth, cart, dan checkout.",
+    tech: ["Flutter", "MySQL"],
+    role: "Full Stack Developer",
+    link: "https://github.com/mun4wwar/onlineshop_flutter.git",
+  },
+  {
+    title: "Karya Asuh Handicraft",
+    desc: "Website e-commerce untuk UMKM Karya Asuh Handicraft berbasis Laravel. Mengelola produk, transaksi, dan dashboard admin.",
+    tech: ["Laravel", "MySQL", "Bootstrap"],
+    role: "Full Stack Developer",
+    link: "https://github.com/mun4wwar/karyaasuh_handicraft.git",
+  },
+  {
+    title: "Aplikasi Manajemen Hafalan Santri",
+    desc: "Aplikasi mobile untuk manajemen hafalan santri di Pondok Pesantren Hamalatul Qur’an. Dikembangkan saat magang di PT. Digital Angkasa (Codelabs Indonesia).",
+    tech: ["Flutter", "MySQL"],
+    role: "App Developer",
+    link: "https://github.com/fadl4n/frontend-hamalatulquran.git",
+  },
+  {
+    title: "Sistem Informasi Rental Mobil Harkat",
+    desc: "Website sistem informasi manajemen rental mobil berbasis Laravel dan Vue.js, digunakan oleh CV. Harkat Yogyakarta sebagai sistem operasional harian.",
+    tech: ["Laravel", "Vue.js", "TailwindCSS", "MySQL"],
+    role: "Full Stack Developer",
     link: "https://harkatrentcar.com",
-  },
-  {
-    title: "Portfolio Website",
-    desc: "Personal portfolio dibuat dengan Next.js dan TailwindCSS, menampilkan project dan kontak.",
-    tech: ["Next.js", "Framer Motion", "TailwindCSS"],
-    link: "#",
-  },
-  {
-    title: "Family Tracker App",
-    desc: "Aplikasi Flutter sederhana untuk melacak lokasi keluarga secara real-time.",
-    tech: ["Flutter", "Firebase"],
-    link: "#",
   },
 ];
 
@@ -42,15 +59,22 @@ export default function ProjectSection() {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.2, duration: 0.6 }}
-            className="group bg-[var(--color-navy-light)] border border-blue-500/10 hover:border-blue-500/40 hover:shadow-[0_0_20px_#3b82f6aa] transition-all duration-300 rounded-2xl p-6 flex flex-col"
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{
+              duration: 0.6,
+              delay: i * 0.15,
+              ease: "easeOut",
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="group bg-[var(--color-navy-light)] border border-blue-500/10 hover:border-blue-500/40 hover:shadow-[0_0_20px_#3b82f6aa] transition-all duration-300 rounded-2xl p-6 flex flex-col hover:-translate-y-1"
           >
             <h2 className="text-2xl font-bold mb-3 group-hover:text-blue-400 transition">
               {project.title}
             </h2>
-            <p className="text-gray-300 mb-4 flex-1">{project.desc}</p>
+            <p className="text-gray-300 mb-3 flex-1">{project.desc}</p>
+
+            <p className="text-sm text-blue-300 mb-4 italic">{project.role}</p>
 
             <div className="flex flex-wrap gap-2 mb-4">
               {project.tech.map((tech, j) => (
@@ -64,7 +88,7 @@ export default function ProjectSection() {
             </div>
 
             <span className="text-blue-400 font-semibold group-hover:underline">
-              Visit Project →
+              {project.link === "#" ? "View Details →" : "Visit Project →"}
             </span>
           </motion.a>
         ))}
