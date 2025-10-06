@@ -44,6 +44,35 @@ export default function AboutSection() {
           own mini projects. Always learning, always improving 🚀
         </p>
       </motion.div>
+
+      {/* SKILLS SECTION */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.4 }}
+        className="mt-16 max-w-4xl text-center"
+      >
+        <h2 className="text-3xl font-semibold mb-8 text-blue-400">
+          Skills & Tools
+        </h2>
+
+        <div className="flex flex-wrap justify-center gap-4 pb-10">
+          {[
+            "HTML", "CSS", "JavaScript", "PHP", "Laravel", "Next.js",
+            "React", "Flutter", "MySQL", "Git", "Tailwind CSS",
+            "REST API"
+          ].map((skill, index) => (
+            <motion.span
+              key={index}
+              whileHover={{ scale: 1.1, backgroundColor: "rgba(96,165,250,0.15)" }}
+              className="px-4 py-2 border border-blue-400/20 rounded-full text-blue-300 text-sm md:text-base font-medium bg-blue-500/5 backdrop-blur-sm shadow-md transition-all duration-300 hover:border-blue-400/40"
+            >
+              {skill}
+            </motion.span>
+          ))}
+        </div>
+      </motion.div>
+
     </section>
   );
 }

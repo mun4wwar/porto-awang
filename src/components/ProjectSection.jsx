@@ -60,13 +60,12 @@ export default function ProjectSection() {
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
               duration: 0.6,
               delay: i * 0.15,
               ease: "easeOut",
             }}
-            viewport={{ once: true, amount: 0.2 }}
             className="group bg-[var(--color-navy-light)] border border-blue-500/10 hover:border-blue-500/40 hover:shadow-[0_0_20px_#3b82f6aa] transition-all duration-300 rounded-2xl p-6 flex flex-col hover:-translate-y-1"
           >
             <h2 className="text-2xl font-bold mb-3 group-hover:text-blue-400 transition">

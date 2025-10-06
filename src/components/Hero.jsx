@@ -77,7 +77,7 @@ export default function Hero() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/projects"
-            className="px-6 py-3 bg-blue-500/90 text-white font-semibold rounded-xl hover:shadow-[0_0_18px_rgba(96,165,250,0.4)] transition-all duration-300"
+            className="relative px-6 py-3 rounded-xl text-white font-semibold bg-[#0b1220] border border-blue-400/50 hover:border-blue-400 hover:shadow-[0_0_25px_4px_rgba(96,165,250,0.4)] transition-all duration-300"
           >
             View Projects
           </Link>
