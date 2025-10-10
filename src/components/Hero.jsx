@@ -74,7 +74,7 @@ export default function Hero() {
           />
         </h2>
 
-        <div className="flex gap-4 justify-center">
+        <div className="flex gap-4 justify-center flex-wrap">
           <Link
             href="/projects"
             className="relative px-6 py-3 rounded-xl text-white font-semibold bg-[#0b1220] border border-blue-400/50 hover:border-blue-400 hover:shadow-[0_0_25px_4px_rgba(96,165,250,0.4)] transition-all duration-300"
@@ -87,6 +87,13 @@ export default function Hero() {
           >
             Contact Me
           </Link>
+          <a
+            href="/cv-awang.pdf"
+            target="_blank" rel="noopener noreferrer"
+            className="px-6 py-3 border border-green-400 text-green-300 font-semibold rounded-xl hover:bg-green-500/20 hover:text-white transition-all duration-300"
+          >
+            My Resume
+          </a>
         </div>
       </motion.div>
 
