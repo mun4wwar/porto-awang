@@ -1,27 +1,20 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import gsap from "gsap";
+import { ScrollTrigger, SplitText } from "gsap/all";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export const metadata = {
   title: "Portofolio | Awang",
-  description: "Personal portfolio of Awang, Software Engineering Student at Polytechnic State Padang",
+  description: "Personal portfolio of Awang, Software Engineering Fresh Graduate at Polytechnic State Padang",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-gray-950 text-white">
+      <body className="text-white bg-gray-950">
         <Navbar />
         <main className="pt-16">{children}</main>
         <Footer />
