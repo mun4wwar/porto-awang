@@ -88,6 +88,11 @@ a:hover {
   }
 }
 
+.hero-name-wrapper {
+  display: inline-block;
+  min-width: 4.2rem; /* cukup buat Awang */
+}
+
 .link-anim::after {
   content: "";
   position: absolute;
@@ -99,3 +104,32 @@ a:hover {
   transform: scaleX(0);
   transform-origin: left;
 }
+
+.btn-upgrade {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-upgrade .wipe {
+  position: absolute;
+  inset: 0;
+  background: rgba(80, 140, 255, 0.25);
+  transform: translateX(-120%);
+  filter: blur(8px);
+}
+
+.btn-upgrade:hover {
+  transform: translateY(-2px) scale(1.015);
+}
+
+.btn-upgrade .text {
+  position: relative;
+  z-index: 10;
+  transition: transform 0.22s ease;
+}
+
+.btn-upgrade:hover .text {
+  transform: translateY(-1.5px);
+}
+

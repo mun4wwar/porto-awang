@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--color-navy-dark)] text-gray-400 py-5 border-t border-blue-500/10">
+    <footer className="bg-(--color-navy-dark) text-gray-400 py-5 border-t border-blue-500/10">
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* nama / brand */}
         <div className="text-center md:text-left">

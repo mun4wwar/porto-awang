@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function ExperienceSection() {
     return (
-        <section className="min-h-[calc(100vh-64px)] flex flex-col items-center bg-[var(--color-navy-dark)] text-center px-6 pt-24 pb-20 text-white">
+        <section className="flex flex-col items-center bg-(--color-navy-dark) text-center px-6 py-20 text-white">
             {/* TITLE */}
             <motion.h1
                 initial={{ opacity: 0, y: -30 }}
@@ -22,7 +22,7 @@ export default function ExperienceSection() {
                 transition={{ duration: 0.8 }}
                 className="max-w-4xl w-full space-y-8 text-left"
             >
-                <div className="bg-[var(--color-navy-light)] border border-blue-500/10 p-6 rounded-2xl shadow-lg hover:shadow-blue-500/10 transition">
+                <div className="bg-(--color-navy-light) border border-blue-500/10 p-6 rounded-2xl shadow-lg hover:shadow-blue-500/10 transition">
                     <h3 className="text-xl font-semibold text-white">
                         Mobile App Developer Intern
                     </h3>
@@ -36,7 +36,7 @@ export default function ExperienceSection() {
                     </p>
                 </div>
 
-                <div className="bg-[var(--color-navy-light)] border border-blue-500/10 p-6 rounded-2xl shadow-lg hover:shadow-blue-500/10 transition">
+                <div className="bg-(--color-navy-light) border border-blue-500/10 p-6 rounded-2xl shadow-lg hover:shadow-blue-500/10 transition">
                     <h3 className="text-xl font-semibold text-white">
                         Freelance Web Developer
                     </h3>
@@ -65,7 +65,7 @@ export default function ExperienceSection() {
                     Education
                 </h2>
 
-                <div className="bg-[var(--color-navy-light)] border border-blue-500/10 p-6 rounded-2xl shadow-lg hover:shadow-blue-500/10 transition">
+                <div className="bg-(--color-navy-light) border border-blue-500/10 p-6 rounded-2xl shadow-lg hover:shadow-blue-500/10 transition">
                     <h3 className="text-xl font-semibold text-white">
                         Politeknik Negeri Padang
                     </h3>

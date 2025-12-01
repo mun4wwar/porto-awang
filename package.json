@@ -22,6 +22,7 @@
     "react-responsive": "^10.0.1",
     "react-scroll": "^1.9.3",
     "react-typed": "^2.0.12",
+    "split-type": "^0.3.4",
     "tsparticles-engine": "^2.12.0"
   },
   "devDependencies": {

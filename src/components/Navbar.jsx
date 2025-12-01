@@ -1,31 +1,30 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import AnimatedLink from "@/app/utils/AnimatedLink";
+import useActiveSection from "@/app/utils/useActiveSection";
 import gsap from "gsap";
-import AnimatedLink from "@/app/AnimatedLink";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin)
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
-    { href: "#about", label: "About" },
-    { href: "#experience", label: "Experience" },
-    { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
+    { href: "#about", id:"about", label: "About" },
+    { href: "#experience", id:"experience", label: "Experience" },
+    { href: "#projects", id:"projects", label: "Projects" },
+    { href: "#contact", id:"contact", label: "Contact" },
   ];
-
-  /** LINK REFS */
-  const linksRef = useRef([]);
-
-  const addToRefs = useCallback((el) => {
-    if (el && !linksRef.current.includes(el)) {
-      linksRef.current.push(el);
-    }
-  }, []);
+  
+  const sectionIds = ["hero", ...links.map(l => l.id)];
+  
+  const active = useActiveSection(sectionIds);
 
   /** SCROLL */
   useEffect(() => {
@@ -34,38 +33,15 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /** GSAP LINK HOVER */
-  useEffect(() => {
-    linksRef.current.forEach((link) => {
-      const tl = gsap.timeline({ paused: true });
-
-      tl.to(link, {
-        rotateX: 90,
-        duration: 0.22,
-        transformOrigin: "bottom",
-        ease: "power2.out",
-      });
-
-      tl.to(link, {
-        rotateX: 0,
-        duration: 0.22,
-        ease: "power2.out",
-      });
-
-      const handle = () => tl.restart();
-      link.addEventListener("mouseenter", handle);
-
-      // cleanup biar ga leak
-      return () => link.removeEventListener("mouseenter", handle);
-    });
-  }, []);
-
   /** Reusable Links Component */
   const NavLinks = ({ className = "" }) => (
     <ul className={`flex space-x-6 ${className}`}>
       {links.map((link) => (
         <li key={link.href}>
-          <AnimatedLink href={link.href}>
+          <AnimatedLink
+            href={link.href}
+            isActive={active === link.id}
+          >
             {link.label}
           </AnimatedLink>
         </li>
@@ -84,7 +60,7 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between max-w-6xl px-6 py-4 mx-auto">
-          <Link href="/">
+          <Link href="#">
             <h1 className="text-2xl font-bold text-white transition hover:text-blue-400">
               Awang<span className="text-blue-400">.</span>
             </h1>
@@ -111,10 +87,21 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.85 }}
             transition={{ duration: 0.35 }}
-            className="fixed z-50 -translate-x-1/2 top-4 left-1/2"
+            className="fixed z-50 -translate-x-1/2 top-4 left-1/2 backdrop-blur-sm"
           >
-            <div className="flex items-center gap-6 px-6 py-3 rounded-full shadow-lg backdrop-blur-xl bg-[rgba(11,18,32,0.85)] border border-blue-500/20">
-              <Link href="/">
+            <div className="flex items-center gap-6 px-6 py-3 rounded-full shadow-lg backdrop-blur-xl bg-[rgba(22,33,54,0.85)] border border-blue-500/20">
+              <Link
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  gsap.to(window, {
+                    duration: 0.8,
+                    scrollTo: {y: '#hero', offsetY: 80},
+                    ease: 'power3.out',
+                    
+                  });
+                }}
+              >
                 <h1 className="text-xl font-bold text-white transition hover:text-blue-400">
                   A<span className="text-blue-400">.</span>
                 </h1>

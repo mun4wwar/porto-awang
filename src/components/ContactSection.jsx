@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function ContactSection() {
   return (
-    <section className="min-h-[calc(100vh-64px)] bg-[var(--color-navy-dark)] text-white px-6 pt-24 pb-16 flex flex-col items-center justify-center">
+    <section className="min-h-[calc(100vh-64px)] bg-(--color-navy-dark) text-white px-6 pt-24 pb-16 flex flex-col items-center justify-center">
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -28,7 +28,7 @@ export default function ContactSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
-        className="w-full max-w-lg bg-[var(--color-navy-light)] p-8 rounded-2xl border border-blue-500/10 shadow-[0_0_20px_#3b82f622]"
+        className="w-full max-w-lg bg-(--color-navy-light) p-8 rounded-2xl border border-blue-500/10 shadow-[0_0_20px_#3b82f622]"
       >
         <div className="mb-5">
           <label className="block text-sm text-gray-300 mb-2">Name</label>

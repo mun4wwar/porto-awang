@@ -1,108 +1,165 @@
 "use client";
 
-import { useCallback } from "react";
-import { Particles } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { ReactTyped } from "react-typed";
-import Link from "next/link";
+import SplitType from "split-type";
+import gsap from "gsap";
+import AnimatedButton from "@/app/utils/AnimatedButton";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function Hero() {
-  const particlesInit = useCallback(async (engine) => {
-    await loadSlim(engine);
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const avatarRef = useRef(null);
+
+  // Floating avatar animation
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(avatarRef.current, {
+        y: -10,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: "power4.inOut",
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Initial page load animations
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const titleSplit = new SplitType(".title-text", { types: "chars" });
+      const waveSplit = new SplitType(".wave", { types: "chars" });
+
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.from(avatarRef.current, { opacity: 0, scale: 0.8, duration: 0.6 })
+        .from(titleSplit.chars, { opacity: 0, y: 35, stagger: 0.04, duration: 0.8 }, "-=0.3")
+        .from(waveSplit.chars, { opacity: 0, y: 35, duration: 0.6 }, "-=0.3")
+        .from(".hero-subtitle", { opacity: 0, y: 20, duration: 0.5 }, "-=0.2")
+        .from(".btn-upgrade", { opacity: 0, y: 25, stagger: 0.1, duration: 0.45 }, "-=0.3");
+
+      return () => {
+        titleSplit.revert();
+        waveSplit.revert();
+      };
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Name swap hover effect
+  useEffect(() => {
+    const name = document.querySelector(".hero-name");
+    const titleWave = gsap.utils.toArray([".title-text", ".wave"]);
+    if (!name) return;
+
+    let currentName = "Awang";
+    let activeTl = null;
+
+    const swapName = (newText) => {
+      if (activeTl) activeTl.kill();
+
+      const oldSplit = new SplitType(name, { types: "chars" });
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      activeTl = tl;
+
+      tl.to(titleWave, { xPercent: -4, opacity: 0.6, duration: 0.25, ease: "power2.out" }, 0)
+        .to(oldSplit.chars, { opacity: 0, y: -20, rotateX: -90, stagger: 0.025, duration: 0.3 }, 0)
+        .add(() => {
+          oldSplit.revert();
+          name.textContent = newText;
+        })
+        .add(() => {
+          const newSplit = new SplitType(name, { types: "chars" });
+          tl.from(newSplit.chars, {
+            opacity: 0,
+            y: 25,
+            rotateX: 90,
+            stagger: 0.03,
+            duration: 0.32,
+            onComplete: () => newSplit.revert(),
+          });
+        })
+        .to(titleWave, { xPercent: 0, opacity: 1, duration: 0.35, ease: "power2.out" }, "-=0.25");
+    };
+
+    const handleHover = () => {
+      if (currentName === "Awang") {
+        swapName("Munawwar Hibatullah");
+        currentName = "Munawwar Hibatullah";
+      }
+    };
+
+    const handleLeave = () => {
+      if (currentName !== "Awang") {
+        swapName("Awang");
+        currentName = "Awang";
+      }
+    };
+
+    name.addEventListener("mouseenter", handleHover);
+    name.addEventListener("mouseleave", handleLeave);
+
+    return () => {
+      name.removeEventListener("mouseenter", handleHover);
+      name.removeEventListener("mouseleave", handleLeave);
+    };
   }, []);
 
   return (
     <section
-      id="hero"
-      className="relative flex flex-col items-center justify-center min-h-[calc(100vh-64px)] text-center bg-gradient-to-b from-[#0b1220] via-[#0d1424] to-[#10182e] text-white overflow-hidden"
+      ref={sectionRef}
+      className="relative flex flex-col items-center justify-center min-h-[calc(100vh-64px)] text-center bg-linear-to-b from-[#0b1220] via-[#0d1424] to-[#10182e] text-white overflow-hidden"
     >
-      {/* subtle particles */}
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        className="absolute inset-0 z-0"
-        options={{
-          background: { color: "transparent" },
-          fpsLimit: 60,
-          particles: {
-            color: { value: "#3b82f6" }, // deep blue
-            links: {
-              color: "#3b82f6",
-              distance: 130,
-              enable: true,
-              opacity: 0.12,
-              width: 0.7,
-            },
-            move: { enable: true, speed: 0.4 },
-            number: { value: 28 },
-            opacity: { value: 0.25 },
-            shape: { type: "circle" },
-            size: { value: { min: 1, max: 2.3 } },
-          },
-          detectRetina: true,
-        }}
-      />
-
-      {/* hero content */}
-      <motion.div
-        className="relative z-10"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.0 }}
-      >
-        <motion.img
+      <div className="relative z-10">
+        {/* Avatar */}
+        <img
+          ref={avatarRef}
           src="/gweh.jpg"
           alt="Awang"
           className="w-35 h-35 rounded-full border-4 border-[#1e3a8a] shadow-[0_0_25px_rgba(59,130,246,0.35)] mx-auto mb-6 object-cover"
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
         />
 
-        <h1 className="mb-4 text-4xl font-bold md:text-6xl">
-          Hi, I’m <span className="text-blue-400/70">Awang</span> 👋
+        {/* Title */}
+        <h1 ref={titleRef} className="mb-4 text-4xl font-bold md:text-6xl flex items-center justify-center gap-2">
+          <span className="title-text">Hi, I'm </span>
+          <span className="hero-name-wrapper inline-block relative">
+            <span className="hero-name text-blue-400/70">Awang</span>
+          </span>
+          <span className="wave">👋</span>
         </h1>
 
-        <h2 className="mb-8 text-lg text-gray-300 md:text-2xl">
+        {/* Subtitle */}
+        <h2 className="hero-subtitle mb-8 text-lg text-gray-300 md:text-2xl">
           <ReactTyped
-            strings={[
-              "Software Engineering Fresh Graduate",
-              "Web Developer",
-              "Mobile App Developer",
-            ]}
+            strings={["Software Engineering Fresh Graduate", "Web Developer", "Mobile App Developer"]}
             typeSpeed={55}
             backSpeed={35}
             loop
           />
         </h2>
 
+        {/* Buttons */}
         <div className="flex flex-wrap justify-center gap-4">
-          <Link
-            href="#projects"
-            className="relative px-6 py-3 rounded-xl text-white font-semibold bg-[#10182e] border border-blue-500/50 hover:border-blue-400 hover:shadow-[0_0_25px_4px_rgba(59,130,246,0.4)] transition-all duration-300"
-          >
-            View Projects
-          </Link>
-          <Link
-            href="#contact"
-            className="px-6 py-3 font-semibold text-blue-300 transition-all duration-300 border border-blue-500 rounded-xl hover:bg-blue-500/20 hover:text-white"
-          >
-            Contact Me
-          </Link>
-          <a
-            href="/cv-awang.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 border border-blue-500 text-white font-semibold rounded-xl bg-blue-500/10 hover:bg-blue-500/20 hover:shadow-[0_0_25px_4px_rgba(59,130,246,0.4)] transition-all duration-300"
-          >
-            My Resume
-          </a>
+          <AnimatedButton href="#projects">Projects</AnimatedButton>
+          <AnimatedButton href="#contact">Call me if u need me 🤙😏</AnimatedButton>
+          <AnimatedButton href="https://linkedin.com/in/munawwar-hibatullah" target="_blank">
+            <div className="flex items-center gap-2">
+              <FaLinkedin className="text-xl" />
+              <span>LinkedIn</span>
+            </div>
+          </AnimatedButton>
+          <AnimatedButton href="https://instagram.com/mnwaarr" target="_blank">
+            <div className="flex items-center gap-2">
+              <FaInstagram className="text-xl" />
+              <span>Instagram</span>
+            </div>
+          </AnimatedButton>
         </div>
-      </motion.div>
-
-      {/* soft bottom glow */}
-      <div className="absolute bottom-0 w-full h-128 bg-gradient-to-t from-blue-500/15 to-transparent blur-3xl" />
+      </div>
     </section>
   );
 }
