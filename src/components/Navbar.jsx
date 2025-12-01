@@ -87,7 +87,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.85 }}
             transition={{ duration: 0.35 }}
-            className="fixed z-50 -translate-x-1/2 top-4 left-1/2 backdrop-blur-sm"
+            className="fixed z-50 -translate-x-1/2 top-4 left-1/2 backdrop-blur-xs"
           >
             <div className="flex items-center gap-6 px-6 py-3 rounded-full shadow-lg backdrop-blur-xl bg-[rgba(22,33,54,0.85)] border border-blue-500/20">
               <Link

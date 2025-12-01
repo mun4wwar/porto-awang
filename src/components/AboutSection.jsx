@@ -7,8 +7,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 
-import { FaHtml5, FaCss3Alt, FaJs, FaPhp, FaLaravel, FaReact, FaGitAlt, FaRegFileAlt, FaBootstrap } from "react-icons/fa";
-import { SiNextdotjs, SiFlutter, SiMysql, SiTailwindcss, SiPostman, SiDart, SiTypescript } from "react-icons/si";
+import {
+  FaHtml5, FaCss3Alt, FaJs, FaPhp, FaLaravel, FaReact, FaGitAlt,
+  FaRegFileAlt, FaBootstrap
+} from "react-icons/fa";
+import {
+  SiNextdotjs, SiFlutter, SiMysql, SiTailwindcss,
+  SiPostman, SiDart, SiTypescript
+} from "react-icons/si";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,14 +42,12 @@ export default function AboutSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Heading animation - slide dari kiri + fade
+      /* ============================
+          HEADING ANIMATION
+      ============================ */
       gsap.fromTo(
         headingRef.current,
-        { 
-          opacity: 0, 
-          x: -100, 
-          rotateY: -45 
-        },
+        { opacity: 0, x: -100, rotateY: -45 },
         {
           opacity: 1,
           x: 0,
@@ -53,20 +57,18 @@ export default function AboutSection() {
           scrollTrigger: {
             trigger: headingRef.current,
             start: "top 85%",
-            end: "bottom 20%",
-            toggleActions: "play reverse play reverse",
+            end: "top 30%",
+            toggleActions: "play none none reverse",
           },
         }
       );
 
-      // About text container - slide dari kanan
+      /* ============================
+          ABOUT TEXT CONTAINER
+      ============================ */
       gsap.fromTo(
         "#about-text-container",
-        { 
-          opacity: 0, 
-          x: 100, 
-          scale: 0.9 
-        },
+        { opacity: 0, x: 100, scale: 0.9 },
         {
           opacity: 1,
           x: 0,
@@ -76,43 +78,42 @@ export default function AboutSection() {
           scrollTrigger: {
             trigger: "#about-text-container",
             start: "top 85%",
-            end: "bottom 20%",
-            toggleActions: "play reverse play reverse",
+            end: "top 25%",
+            toggleActions: "play none none reverse",
           },
         }
       );
 
-      // CV Button - bounce effect
-      gsap.fromTo(
-        ".about-button",
-        { 
-          opacity: 0, 
-          y: 60, 
-          scale: 0.5 
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: ".about-button",
-            start: "top 90%",
-            end: "bottom 20%",
-            toggleActions: "play reverse play reverse",
-          },
-        }
-      );
+      /* ============================
+          ABOUT BUTTONS
+          (fix trigger collapse)
+      ============================ */
+      gsap.utils.toArray(".about-button").forEach((btn) => {
+        gsap.fromTo(
+          btn,
+          { opacity: 0, y: 60, scale: 0.5 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+            scrollTrigger: {
+              trigger: btn,
+              start: "top 90%",
+              end: "top 20%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
 
-      // Skills title - zoom in
+      /* ============================
+          SKILLS TITLE
+      ============================ */
       gsap.fromTo(
         ".skills-title",
-        { 
-          opacity: 0, 
-          scale: 0.3,
-          rotateZ: -10
-        },
+        { opacity: 0, scale: 0.3, rotateZ: -10 },
         {
           opacity: 1,
           scale: 1,
@@ -122,52 +123,54 @@ export default function AboutSection() {
           scrollTrigger: {
             trigger: ".skills-title",
             start: "top 85%",
-            end: "bottom 20%",
-            toggleActions: "play reverse play reverse",
+            end: "top 20%",
+            toggleActions: "play none none reverse",
           },
         }
       );
 
-      // Skill cards - stagger dari bawah dengan rotation
-      gsap.fromTo(
-        ".skill-card",
-        {
-          opacity: 0,
-          y: 80,
-          rotateX: 45,
-          scale: 0.7,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          rotateX: 0,
-          scale: 1,
-          duration: 0.6,
-          stagger: {
-            each: 0.08,
-            from: "start",
+      /* ============================
+          SKILL CARDS (MAJOR FIX)
+          -> each card has its own trigger
+          -> reverse works both ways
+      ============================ */
+      gsap.utils.toArray(".skill-card").forEach((card) => {
+        gsap.fromTo(
+          card,
+          {
+            opacity: 0,
+            y: 80,
+            rotateX: 45,
+            scale: 0.7,
           },
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".skill-card",
-            start: "top 90%",
-            end: "bottom 20%",
-            toggleActions: "play reverse play reverse",
-          },
-        }
-      );
+          {
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              end: "top 20%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
 
-      // Title hover animation
+      /* ============================
+          TITLE HOVER ANIMATION
+      ============================ */
       const title = headingRef.current;
       if (title && !title.querySelector(".split-done")) {
         const oriText = title.textContent;
         title.innerHTML = oriText
           .split("")
           .map(
-            (char) =>
-              `<span class="split-done" style="display: inline-block; position: relative;">${
-                char === " " ? "&nbsp;" : char
-              }</span>`
+            (c) =>
+              `<span class="split-done" style="display:inline-block;position:relative;">${c === " " ? "&nbsp;" : c}</span>`
           )
           .join("");
 
@@ -190,11 +193,6 @@ export default function AboutSection() {
         };
 
         title.addEventListener("mouseenter", handleMouseEnter);
-
-        return () => {
-          title.removeEventListener("mouseenter", handleMouseEnter);
-          if (hoverTl) hoverTl.kill();
-        };
       }
     }, sectionRef);
 
@@ -205,12 +203,14 @@ export default function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative flex flex-col items-center justify-center py-20 px-4 md:px-8 scroll-mt-20 bg-linear-to-b from-[#10182e] via-[#0d1424] to-[#0b1220]"
+      className="flex flex-col items-center justify-center py-28 px-4 md:px-8 bg-linear-to-b from-[#10182e] via-[#0d1424] to-[#0b1220]"
     >
-      {/* Top Glow */}
-      <div className="absolute -top-72 left-0 w-full h-5/12 bg-linear-to-b from-blue-500/15 via-blue-500/10 to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute -top-72 left-0 w-full h-5/12 bg-linear-to-b from-blue-500/30 via-blue-500/20 to-transparent blur-3xl pointer-events-none" />
 
-      <h1 ref={headingRef} className="relative z-10 text-4xl md:text-5xl font-semibold mb-10 opacity-0">
+      <h1
+        ref={headingRef}
+        className="relative z-10 text-4xl md:text-5xl font-semibold mb-10 opacity-0"
+      >
         About <span className="text-blue-400">Me</span>
       </h1>
 
@@ -227,7 +227,9 @@ export default function AboutSection() {
         </div>
 
         <div className="max-w-6xl w-full text-center">
-          <h2 className="skills-title text-3xl font-semibold mb-12 text-blue-400 opacity-0">Skills & Tools</h2>
+          <h2 className="skills-title text-3xl font-semibold mb-12 text-blue-400 opacity-0">
+            Skills & Tools
+          </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-items-center">
             {SKILLS.map((item) => (

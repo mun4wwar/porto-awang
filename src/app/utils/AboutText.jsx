@@ -19,14 +19,9 @@ const textContent = [
     }
 ];
 
-export default function AboutText() {
+export default function AboutText(props) {
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-            className="max-w-7xl w-full bg-gray-800 p-8 rounded-2xl shadow-xl border border-blue-500/10" 
-        >
+        <div {...props} className="max-w-7xl w-full bg-gray-800 p-8 rounded-2xl shadow-xl border border-blue-500/10">
             {textContent.map((item) => (
                 <p 
                     key={item.id}
@@ -35,6 +30,6 @@ export default function AboutText() {
                     {item.text}
                 </p>
             ))}
-        </motion.div>
+        </div>
     );
 }
