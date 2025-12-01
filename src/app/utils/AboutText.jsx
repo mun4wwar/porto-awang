@@ -1,23 +1,21 @@
-import { motion } from "framer-motion";
-
 const textContent = [
-    { 
-        id: 1, 
-        text: "Fresh Graduate Full-Stack Developer proficient in building scalable web and cross-platform mobile applications. I thrive on translating complex requirements into simple, high-performance digital experiences."
+    {
+        id: 1,
+        text:
+        "Fresh graduate with a strong focus on frontend development. Most of my work revolves around building clean, fast, and practical interfaces using Next.js and Tailwind."
     },
-    { 
-        id: 2, 
-        text: (
-            <>
-                Specializing in **Next.js (React)** and **Tailwind CSS** for the frontend, backed by **Laravel** for stable systems, and experience in **Flutter**. My key achievement is delivering a rental system that **reduced manual admin time by 30%**.
-            </>
-        )
+    {
+        id: 2,
+        text:
+        "I also work with Laravel for backend APIs and have shipped several end-to-end projects for campus and small business needs. Nothing fancy—just reliable systems that solve real problems."
     },
-    { 
-        id: 3, 
-        text: "I prioritize architectural clarity and long-term maintainability, focusing my efforts on solutions that deliver tangible business impact over chasing short-lived trends."
+    {
+        id: 3,
+        text:
+        "My current goal is sharpening my engineering fundamentals: clean architecture, reusable components, predictable data flow, and writing code that’s easy to maintain, not just easy to ship."
     }
 ];
+
 
 export default function AboutText(props) {
     return (
