@@ -218,7 +218,7 @@ export default function AboutSection() {
         <AboutText id="about-text-container" />
 
         <div className="about-button flex flex-wrap justify-center gap-4 mt-8 mb-16 opacity-0">
-          <AnimatedButton href="/cv-awang" target="_blank">
+          <AnimatedButton href="/cv-awang.pdf" target="_blank">
             <div className="flex items-center gap-2">
               <FaRegFileAlt />
               <span>Ini My CV gue</span>

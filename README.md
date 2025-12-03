@@ -34,3 +34,10 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+DI FORM GUE INSTRUKSI NY UPLOAD FILE, GUE BINGUNG APA YANG MAU GUE UPLOAD, JADINY GUE KIRIM FOLDER ZIP ENDURANCE TEST NYA AJA YAAA MINVOX IZZZIIINNN.
+OIYAA BTW API NYA KOK 404 NOT FOUND YAA, APA KARENA GUE TELAT BUKANYA, SEBENERNY GUE UDH BUKA DRI HARI H PENGUMUMAN SII, TAPI NTAH LAH, BTW WISH ME LUCK YAA MINVOXXX
+OIYA MIN BTW UDH GUE DEPLOY JUGA YAAA NII LINK NYA:
+https://porto-awang.vercel.app/
+IZZIIINNN 🫸🫷
