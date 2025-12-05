@@ -221,7 +221,7 @@ export default function AboutSection() {
           <AnimatedButton href="/cv-awang.pdf" target="_blank">
             <div className="flex items-center gap-2">
               <FaRegFileAlt />
-              <span>Ini My CV gue</span>
+              <span>My Resume</span>
             </div>
           </AnimatedButton>
         </div>
