@@ -1,6 +1,6 @@
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/sections/Navbar";
+import Footer from "@/sections/Footer";
 import gsap from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
 

@@ -1,12 +1,12 @@
-import AboutSection from "@/components/AboutSection";
-import ExperienceSection from "@/components/ExperienceSection";
-import Hero from "@/components/Hero";
-import ProjectSection from "@/components/ProjectSection";
+import AboutSection from "@/sections/AboutSection";
+import ExperienceSection from "@/sections/ExperienceSection";
+import Hero from "@/sections/Hero";
+import ProjectSection from "@/sections/ProjectSection";
 import Contact from "./utils/Contact";
 
 export default function Home() {
   return (
-    <div>
+    <div className="min-h-screen overflow-x-hidden">
       <section id="hero">
         <Hero />
       </section>

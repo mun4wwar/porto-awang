@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-const ContactSection = dynamic(() => import("@/components/ContactSection"), {
+const ContactSection = dynamic(() => import("@/sections/ContactSection"), {
     ssr: false,
 });
 
