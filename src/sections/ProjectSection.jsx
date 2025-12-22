@@ -16,14 +16,14 @@ const projects = [
   },
   {
     title: "Online Shop Mobile App",
-    desc: "A simple mobile e-commerce application built during semester 4. Includes features such as authentication, product browsing, cart management, and checkout using Flutter.",
+    desc: "A mobile e-commerce app with authentication, product browsing, cart, and checkout features, built using Flutter.",
     tech: ["Flutter", "MySQL"],
     role: "Full Stack Developer",
     link: "https://github.com/mun4wwar/onlineshop_flutter.git",
   },
   {
     title: "Karya Asuh Handicraft",
-    desc: "A full e-commerce website developed as the main project in semester 5 for the local UMKM “Karya Asuh Handicraft.” It provides product display, order handling, and an admin dashboard for managing inventory and transactions.",
+    desc: "An e-commerce website for a local UMKM featuring product management, order processing, and an admin dashboard.",
     tech: ["Laravel", "MySQL", "Bootstrap"],
     role: "Full Stack Developer",
     link: "https://github.com/mun4wwar/karyaasuh_handicraft.git",

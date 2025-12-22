@@ -9,7 +9,8 @@ import { useEffect, useRef } from "react";
 
 import {
   FaHtml5, FaCss3Alt, FaJs, FaPhp, FaLaravel, FaReact, FaGitAlt,
-  FaRegFileAlt, FaBootstrap
+  FaRegFileAlt, FaBootstrap,
+  FaJava
 } from "react-icons/fa";
 import {
   SiNextdotjs, SiFlutter, SiMysql, SiTailwindcss,
@@ -22,16 +23,17 @@ const SKILLS = [
   { name: "HTML", icon: FaHtml5, color: "text-orange-500" },
   { name: "CSS", icon: FaCss3Alt, color: "text-blue-500" },
   { name: "JavaScript", icon: FaJs, color: "text-yellow-400" },
+  { name: "Java", icon: FaJava, color: "text-blue-400" },
+  { name: "MySQL", icon: SiMysql, color: "text-blue-600" },
   { name: "PHP", icon: FaPhp, color: "text-indigo-400" },
   { name: "Laravel", icon: FaLaravel, color: "text-red-500" },
+  { name: "Bootstrap", icon: FaBootstrap, color: "text-cyan-400" },
   { name: "Dart", icon: SiDart, color: "text-cyan-500" },
   { name: "Flutter", icon: SiFlutter, color: "text-cyan-500" },
   { name: "React", icon: FaReact, color: "text-cyan-400" },
+  { name: "Tailwind", icon: SiTailwindcss, color: "text-cyan-400" },
   { name: "TypeScript", icon: SiTypescript, color: "text-cyan-400" },
   { name: "Next.js", icon: SiNextdotjs, color: "text-gray-900 dark:text-white" },
-  { name: "MySQL", icon: SiMysql, color: "text-blue-600" },
-  { name: "Tailwind", icon: SiTailwindcss, color: "text-cyan-400" },
-  { name: "Bootstrap", icon: FaBootstrap, color: "text-cyan-400" },
   { name: "Git", icon: FaGitAlt, color: "text-orange-600" },
   { name: "REST API", icon: SiPostman, color: "text-orange-500" },
 ];
