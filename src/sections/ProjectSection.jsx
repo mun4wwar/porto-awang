@@ -30,14 +30,16 @@ const projects = [
   },
   {
     title: "Aplikasi Manajemen Hafalan Santri (Internship Project)",
-    desc: "A complete car rental management system built as a final project (TA), supporting bookings, driver usage, transaction flows, and comprehensive admin operations. Integrated with real client workflows and deployed for practical use.",
+    desc: "A mobile application supporting memorization tracking and management, developed during an internship program.",
     tech: ["Flutter", "MySQL"],
     role: "Front End Mobile App Developer",
     link: "https://github.com/fadl4n/frontend-hamalatulquran.git",
   },
   {
     title: "Sistem Informasi Rental Mobil Harkat (Final Project)",
-    desc: "A fully integrated car rental management system built as my final project. It includes Google OAuth for instant login, multi-role authentication (Admin, Driver, Customer), dynamic booking workflows, driver assignment, transaction handling, and verification processes. The system is deployed and used by a real client, supporting actual day-to-day rental operations end-to-end.",
+    desc: "A full-featured car rental system with multi-role authentication, booking workflows, transaction management, and real-world deployment.",
+    // A fully integrated car rental management system built as my final project. It includes Google OAuth for instant login, multi-role authentication (Admin, Driver, Customer), dynamic booking workflows, driver assignment, transaction handling, and verification processes. The system is deployed and used by a real client, supporting actual day-to-day rental operations end-to-end.
+    
     tech: ["Laravel", "Vue.js", "TailwindCSS", "MySQL"],
     role: "Full Stack Developer",
     link: "https://harkatrentcar.com",
