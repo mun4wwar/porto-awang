@@ -8,21 +8,15 @@ import AnimatedLink from "@/app/utils/AnimatedLink";
 import useActiveSection from "@/app/utils/useActiveSection";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { LINKS } from "@/constant/Navigation";
 
 gsap.registerPlugin(ScrollToPlugin)
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const links = [
-    { href: "#about", id:"about", label: "About" },
-    { href: "#experience", id:"experience", label: "Experience" },
-    { href: "#projects", id:"projects", label: "Projects" },
-    { href: "#contact", id:"contact", label: "Contact" },
-  ];
   
-  const sectionIds = ["hero", ...links.map(l => l.id)];
+  const sectionIds = ["hero", ...LINKS.map(l => l.id)];
   
   const active = useActiveSection(sectionIds);
 
@@ -36,7 +30,7 @@ export default function Navbar() {
   /** Reusable Links Component */
   const NavLinks = ({ className = "" }) => (
     <ul className={`flex space-x-6 ${className}`}>
-      {links.map((link) => (
+      {LINKS.map((link) => (
         <li key={link.href}>
           <AnimatedLink
             href={link.href}
@@ -122,7 +116,7 @@ export default function Navbar() {
         }`}
       >
         <ul className="flex flex-col items-center py-4 space-y-4">
-          {links.map((link) => (
+          {LINKS.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}

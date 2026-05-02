@@ -3,6 +3,7 @@
 import { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { EXP } from "@/constant/Experiences";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,22 +75,35 @@ export default function ExperienceSection() {
 
             {/* EXPERIENCE LIST */}
             <div className="max-w-4xl w-full text-left">
-                <div className="exp-card bg-(--color-navy-light) border border-blue-500/10 p-8 rounded-2xl shadow-lg">
-                    <h3 className="text-2xl font-semibold text-white">
-                        Mobile App Developer Intern
-                    </h3>
-                    <p className="text-blue-400 mt-1">
-                        PT. Digital Angkasa (Feb – May 2025)
-                    </p>
-                    <p className="text-gray-300 mt-4 leading-relaxed">
-                        Developed and deployed a full-featured memorization management system
-                        for Pondok Pesantren Hamalatul Qur'an using{" "}
-                        <span className="text-blue-400">Flutter</span>,{" "}
-                        <span className="text-blue-400">Laravel</span>, &{" "}
-                        <span className="text-blue-400">MySQL</span>.
-                        Includes multi-role authentication & CRUD operations.
-                    </p>
-                </div>
+                {EXP.map((item, index) => (
+                    <div
+                        key={index}
+                        className="exp-card bg-(--color-navy-light) border border-blue-500/10 p-8 rounded-2xl shadow-lg">
+                        <h3 className="text-2xl font-semibold text-white">
+                            {item.position}
+                        </h3>
+                        <p className="text-blue-400 mt-1">
+                            {item.company} | {item.duration}
+                        </p>
+                        <p className="text-gray-300 mt-4 leading-relaxed">
+                            {item.desc}
+                        </p>
+
+                        <div className="flex flex-wrap gap-4 mt-4">
+                            {item.skill.map((skill, i) => {
+                                const Icon = skill.icon;
+
+                                return (
+                                    <span
+                                        key={i}
+                                        className="px-3 py-1 text-sm bg-blue-500/10 text-white rounded-full flex items-center gap-1">
+                                        <Icon className={`text-2xl ${skill.color}`} />
+                                    </span>
+                                )
+                            })}
+                        </div>
+                    </div>
+                ))}
             </div>
 
             {/* EDUCATION SECTION */}
@@ -113,17 +127,6 @@ export default function ExperienceSection() {
                                 Berbasis Web (Laravel, Vue.js, Tailwind, MySQL)
                             </span>.
                         </p>
-                    </div>
-
-                    <div className="edu-card bg-(--color-navy-light) border border-blue-500/10 p-8 rounded-2xl shadow-lg">
-                        <h3 className="text-2xl font-semibold text-white">
-                            SMA Negeri 12 Depok
-                        </h3>
-                        <p className="text-blue-400 mt-1 mb-4">Science (2019–2022)</p>
-                        <ul className="space-y-2 list-disc list-inside text-gray-300">
-                            <li>Member of OSIS (2019–2020)</li>
-                            <li>Treasurer of OSIS (2020–2021)</li>
-                        </ul>
                     </div>
                 </div>
             </div>

@@ -3,40 +3,13 @@
 import AboutText from "@/app/utils/AboutText";
 import AnimatedButton from "@/app/utils/AnimatedButton";
 import SkillCard from "@/app/utils/SkillCard";
+import { SKILLS } from "@/constant/Skills";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
-
-import {
-  FaHtml5, FaCss3Alt, FaJs, FaPhp, FaLaravel, FaReact, FaGitAlt,
-  FaRegFileAlt, FaBootstrap,
-  FaJava
-} from "react-icons/fa";
-import {
-  SiNextdotjs, SiFlutter, SiMysql, SiTailwindcss,
-  SiPostman, SiDart, SiTypescript
-} from "react-icons/si";
+import { FaRegFileAlt } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const SKILLS = [
-  { name: "HTML", icon: FaHtml5, color: "text-orange-500" },
-  { name: "CSS", icon: FaCss3Alt, color: "text-blue-500" },
-  { name: "JavaScript", icon: FaJs, color: "text-yellow-400" },
-  { name: "Java", icon: FaJava, color: "text-blue-400" },
-  { name: "MySQL", icon: SiMysql, color: "text-blue-600" },
-  { name: "PHP", icon: FaPhp, color: "text-indigo-400" },
-  { name: "Laravel", icon: FaLaravel, color: "text-red-500" },
-  { name: "Bootstrap", icon: FaBootstrap, color: "text-cyan-400" },
-  { name: "Dart", icon: SiDart, color: "text-cyan-500" },
-  { name: "Flutter", icon: SiFlutter, color: "text-cyan-500" },
-  { name: "React", icon: FaReact, color: "text-cyan-400" },
-  { name: "Tailwind", icon: SiTailwindcss, color: "text-cyan-400" },
-  { name: "TypeScript", icon: SiTypescript, color: "text-cyan-400" },
-  { name: "Next.js", icon: SiNextdotjs, color: "text-gray-900 dark:text-white" },
-  { name: "Git", icon: FaGitAlt, color: "text-orange-600" },
-  { name: "REST API", icon: SiPostman, color: "text-orange-500" },
-];
 
 export default function AboutSection() {
   const sectionRef = useRef(null);
